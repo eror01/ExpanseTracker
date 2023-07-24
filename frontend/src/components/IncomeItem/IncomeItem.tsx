@@ -49,26 +49,24 @@ function IncomeItem({
   };
 
   const expenseCatIcon = () => {
-    switch (category) {
-      case "education":
-        return Icon.book;
-      case "groceries":
-        return Icon.food;
-      case "health":
-        return Icon.medical;
-      case "subscriptions":
-        return Icon.tv;
-      case "takeaways":
-        return Icon.takeaway;
-      case "clothing":
-        return Icon.clothing;
-      case "travelling":
-        return Icon.freelance;
-      case "other":
-        return Icon.circle;
-      default:
-        return "";
-    }
+    const categoryIconObject: {
+      [key: string]: React.ReactElement<
+        any,
+        string | React.JSXElementConstructor<any>
+      >;
+    } = {
+      education: Icon.book,
+      groceries: Icon.food,
+      health: Icon.medical,
+      subscriptions: Icon.tv,
+      takeaways: Icon.takeaway,
+      clothing: Icon.clothing,
+      travelling: Icon.freelance,
+      other: Icon.circle,
+    };
+    if (!category) return "";
+
+    return categoryIconObject[category] || "";
   };
 
   return (
